@@ -1,0 +1,15 @@
+﻿@typeparam TGlobal
+
+<CascadingValue Value="this">
+    @ChildContent
+</CascadingValue>
+@code {
+    [Parameter]
+    public required string ComponentName { get; set; }
+
+    [Parameter]
+    public TGlobal? ContextModel { get; set; }
+
+   public required RenderFragment ChildContent { get; set; }
+
+}
