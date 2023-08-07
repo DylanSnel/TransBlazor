@@ -1,0 +1,38 @@
+﻿@using TransBlazor.Models;
+@typeparam TTranslationScope
+
+
+<p>Test</p>
+@Default
+
+
+@code {
+    [CascadingParameter(Name = "Scope")]
+    public required TTranslationScope Scope { get; set; }
+
+    [CascadingParameter(Name = "Global")]
+    public required GlobalScope Global { get; set; }
+
+    public Context<GlobalScope, TTranslationScope> CurrentScope => new()
+        {
+            Global = Global,
+            Scope = Scope
+        };
+    [EditorRequired, Parameter]
+    public required RenderFragment<Context<GlobalScope, TTranslationScope>> Default { get; set; }
+
+    [ Parameter]
+    public  RenderFragment Loading { get; set; }
+
+    [CascadingParameter(Name = "ComponentName")]
+    public required string ComponentName { get; set; }
+
+    [Parameter]
+    public required string Key { get; set; }
+
+    public class Context<TGlobal, TLocal>
+    {
+        public required TGlobal Global { get; set; }
+        public required TLocal Scope { get; set; }
+    }
+}

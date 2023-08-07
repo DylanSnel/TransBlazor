@@ -1,0 +1,19 @@
+﻿@attribute [CascadingTypeParameter(nameof(TTranslationScope))]
+@typeparam TTranslationScope
+
+<CascadingValue Value="@ComponentName" Name="ComponentName">
+    <CascadingValue Value="@Scope" Name="Scope">
+        @ChildContent
+    </CascadingValue>
+</CascadingValue>
+
+@code {
+    [Parameter]
+    public required string ComponentName { get; set; } = "";
+
+    [Parameter]
+    public TTranslationScope? Scope { get; set; }
+
+    [Parameter]
+    public required RenderFragment ChildContent { get; set; }
+}

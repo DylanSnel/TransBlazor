@@ -1,0 +1,22 @@
+﻿@using TransBlazor.Models;
+@attribute [CascadingTypeParameter(nameof(TTranslationGlobalState))]
+@typeparam TTranslationGlobalState
+
+<CascadingValue Value="@Prefix" Name="ComponentName">
+    <CascadingValue Value="@Global" Name="Global">
+@*        <TranslationScope Scope="@(new EmptyScope())">*@
+            @ChildContent
+@*        </TranslationScope>*@
+    </CascadingValue>
+</CascadingValue>
+
+@code {
+    [Parameter]
+    public required string Prefix { get; set; } = "";
+
+    [Parameter]
+    public TTranslationGlobalState? Global { get; set; }
+
+    [Parameter]
+    public required RenderFragment ChildContent { get; set; }
+}

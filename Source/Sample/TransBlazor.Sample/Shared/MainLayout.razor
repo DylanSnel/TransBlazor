@@ -1,5 +1,7 @@
-﻿@inherits LayoutComponentBase
+﻿@using TransBlazor.Sample.Models;
+@inherits LayoutComponentBase
 
+<TransBlazorProvider Global="translationState">
 <div class="page">
     <div class="sidebar">
         <NavMenu />
@@ -15,3 +17,9 @@
         </article>
     </main>
 </div>
+
+</TransBlazorProvider>
+@code{
+
+    TranslationState translationState = new();
+}
